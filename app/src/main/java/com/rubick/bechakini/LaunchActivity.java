@@ -14,12 +14,15 @@ public class LaunchActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         PreferenceStorage.init(getApplicationContext());
+        NetworkTasks.init(getApplicationContext());
+
+        startActivity(new Intent(LaunchActivity.this, SignUpActivity.class));
 
         if(PreferenceStorage.isFirstLaunch()){
 
         }
         else {
-            startActivity(new Intent(LaunchActivity.this, RegisterActivity.class));
+
         }
 
     }
