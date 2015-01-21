@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+
         android:ems="10"
         android:id="@+id/etName"
         android:layout_marginTop="100dp"
@@ -31,7 +31,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etPass"
         android:layout_below="@+id/etEmail"
@@ -42,7 +42,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etConfPass"
         android:layout_below="@+id/etPass"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -37,9 +41,40 @@ public class LoginActivity extends ActionBarActivity {
     }
 
 
-       boolean validateInputs(){
+    public final static boolean isValidEmail(CharSequence target) {
+        if (TextUtils.isEmpty(target)) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
+    boolean validateInputs(){
+
+           String email = etEmail.getText().toString();
+           String pass = etPass.getText().toString();
+
+
+
+           if(email.isEmpty()){
+               Crouton.makeText(this, "Email needed", Style.ALERT).show();
+               return false;
+           }
+
+           if(pass.isEmpty()){
+               Crouton.makeText(this, "Need a password", Style.ALERT).show();
+               return false;
+           }
+
+           if(!isValidEmail(email)){
+               Crouton.makeText(this, "Email not valid", Style.ALERT).show();
+               return false;
+           }
+
            return true;
-       }
+
+
+    }
 
     void initGUI(){
 
@@ -158,7 +193,7 @@ public class LoginActivity extends ActionBarActivity {
                     startActivity(new Intent(LoginActivity.this, FakeHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }else{
 
-                    Toast.makeText(getApplicationContext(),"Wrong Email-password combination",Toast.LENGTH_SHORT).show();
+                    Crouton.makeText(LoginActivity.this, "Incorrect email-password combination", Style.ALERT).show();
                 }
 
 

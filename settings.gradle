@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':Crouton'
+project(':Crouton').projectDir = new File('libs/crouton')

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:id="@+id/etEmail"
@@ -21,13 +21,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etPass"
         android:layout_below="@+id/etEmail"
         android:layout_alignLeft="@+id/etEmail"
         android:hint="Password"
-        android:layout_alignStart="@+id/etName" />
+         />
 
 
 
