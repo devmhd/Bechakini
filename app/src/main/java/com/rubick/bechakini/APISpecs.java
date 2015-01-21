@@ -12,4 +12,13 @@ public class APISpecs {
     public static final String POST_SIGNUP_EMAIL = "email";
 
     public static final String SUBMIT_SIGNUP = "register.php";
+
+
+
+
+
+    public static final String SUBMIT_LOGIN = "login.php";
+    public static final String POST_LOGIN_EMAIL = "email";
+    public static final String POST_LOGIN_PASSWORD = "password";
+
 }

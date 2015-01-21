@@ -1,5 +1,7 @@
 package com.rubick.bechakini;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,13 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -23,9 +21,11 @@ import java.util.ArrayList;
 public class SignUpActivity extends ActionBarActivity {
 
     EditText etName, etPass, etConfPass, etEmail;
-    Button btnSignUp, btnCancel;
+    Button btnSignUp, btnAlreadyHaveAcc;
 
     SignUpNetworkTask signUpTask;
+
+    ProgressDialog progressDialog;
 
 
 
@@ -35,8 +35,8 @@ public class SignUpActivity extends ActionBarActivity {
         etConfPass = (EditText) findViewById(R.id.etConfPass);
         etEmail = (EditText) findViewById(R.id.etEmail);
 
-        btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnSignUp = (Button) findViewById(R.id.btnSignIn);
+        btnAlreadyHaveAcc = (Button) findViewById(R.id.btnAlreadyHaveAcc);
 
 
 
@@ -69,6 +69,14 @@ public class SignUpActivity extends ActionBarActivity {
         });
 
 
+        btnAlreadyHaveAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+            }
+        });
+
+
     }
 
 
@@ -95,12 +103,23 @@ public class SignUpActivity extends ActionBarActivity {
     }
 
 
+    void loginAndSaveCredentials(){
+
+        PreferenceStorage.setLoggedIn(true);
+        PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
+        PreferenceStorage.setLoggerPassword(etPass.getText().toString());
+
+    }
+
+
     private class SignUpNetworkTask extends AsyncTask<String, Void, JSONObject> {
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(SignUpActivity.this, "", "Wait a second");
         }
 
         @Override
@@ -133,7 +152,18 @@ public class SignUpActivity extends ActionBarActivity {
 
         protected void onPostExecute(JSONObject searchResponse) {
 
-            Toast.makeText(getApplicationContext(), searchResponse.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), searchResponse.toString(), Toast.LENGTH_SHORT).show();
+
+
+            progressDialog.dismiss();
+
+            PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
+            PreferenceStorage.setLoggerName(etName.getText().toString());
+            PreferenceStorage.setLoggerPassword(etPass.getText().toString());
+
+            PreferenceStorage.setLoggedIn(true);
+
+            startActivity(new Intent(SignUpActivity.this, FakeHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
         };
 

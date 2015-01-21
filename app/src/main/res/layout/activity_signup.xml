@@ -13,7 +13,7 @@
         android:text="Name"
         android:ems="10"
         android:id="@+id/etName"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
         android:hint="Name" />
 
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnSignIn"
         android:layout_below="@+id/etConfPass"
         android:layout_alignLeft="@+id/etConfPass"
         android:layout_alignStart="@+id/etConfPass"
@@ -65,13 +65,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/btnCancel"
-        android:layout_below="@+id/btnSignUp"
+        android:text="I Already have an account"
+        android:id="@+id/btnAlreadyHaveAcc"
+        android:layout_below="@+id/btnSignIn"
         android:layout_alignLeft="@+id/etConfPass"
         android:layout_alignStart="@+id/etConfPass"
 
         android:layout_alignRight="@+id/etConfPass"
         android:layout_alignEnd="@+id/etConfPass" />
+
+
 
 </RelativeLayout>

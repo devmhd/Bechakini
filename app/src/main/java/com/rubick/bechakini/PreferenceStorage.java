@@ -27,4 +27,84 @@ public class PreferenceStorage {
 
         return editor.commit();
     }
+
+
+    public static boolean isLoggedIn()
+    {
+
+        return PreferenceManager.getDefaultSharedPreferences(appContext).getBoolean("isLoggedIn", false);
+
+
+    }
+
+    public static boolean setLoggedIn(boolean loggedIn)
+    {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(appContext).edit();
+        editor.putBoolean("isLoggedIn", loggedIn);
+
+        return editor.commit();
+    }
+
+    public static String getLoggerEmail()
+    {
+
+        return PreferenceManager.getDefaultSharedPreferences(appContext).getString("loggerEmail", "abc@example.com");
+
+
+    }
+
+    public static boolean setLoggerEmail(String email)
+    {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(appContext).edit();
+        editor.putString("loggerEmail", email);
+
+        return editor.commit();
+
+
+    }
+
+    public static String getLoggerPassword()
+    {
+
+        return PreferenceManager.getDefaultSharedPreferences(appContext).getString("loggerPassword", "abc@example.com");
+
+
+    }
+
+    public static boolean setLoggerPassword(String pass)
+    {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(appContext).edit();
+        editor.putString("loggerPassword", pass);
+
+        return editor.commit();
+
+
+    }
+
+
+    public static String getLoggerName()
+    {
+
+        return PreferenceManager.getDefaultSharedPreferences(appContext).getString("loggerName", "");
+
+
+    }
+
+    public static boolean setLoggerName(String name)
+    {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(appContext).edit();
+        editor.putString("loggerName", name);
+
+        return editor.commit();
+
+
+    }
+
+
+
+
 }

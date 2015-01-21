@@ -16,13 +16,21 @@ public class LaunchActivity extends ActionBarActivity {
         PreferenceStorage.init(getApplicationContext());
         NetworkTasks.init(getApplicationContext());
 
-        startActivity(new Intent(LaunchActivity.this, SignUpActivity.class));
+
 
         if(PreferenceStorage.isFirstLaunch()){
 
+            PreferenceStorage.setFirstLaunch();
+            startActivity(new Intent(LaunchActivity.this, SignUpActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
+
         else {
 
+            if(PreferenceStorage.isLoggedIn()){
+                startActivity(new Intent(LaunchActivity.this, FakeHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }else{
+                startActivity(new Intent(LaunchActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
         }
 
     }
