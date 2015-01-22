@@ -1,19 +1,34 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    tools:context="com.rubick.bechakini.RegisterActivity"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType = "centerCrop"
+        android:id="@+id/imageView" />
+
+    <RelativeLayout android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffe7eee9"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.rubick.bechakini.RegisterActivity">
+    android:layout_width="match_parent">
+
 
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_bg"
+        android:padding="10dp"
         android:layout_centerHorizontal="true"
         android:ems="10"
+        android:layout_below="@+id/ivLogo"
         android:id="@+id/etEmail"
         android:hint="Email"
          />
@@ -22,7 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:padding="10dp"
+        android:background="@drawable/et_bg"
         android:id="@+id/etPass"
         android:layout_below="@+id/etEmail"
         android:layout_alignLeft="@+id/etEmail"
@@ -34,9 +52,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="SIGN IN"
         android:id="@+id/btnSignIn"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/etPass"
+        android:background="@drawable/btn_primary"
+        android:textColor="#fff"
         android:layout_alignRight="@+id/etPass"
         android:layout_alignEnd="@+id/etPass"
         android:layout_alignLeft="@+id/etPass"
@@ -45,13 +66,27 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I Dont have an account"
+        android:text="I'M NEW"
         android:id="@+id/btnNewAccount"
-
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/btn_secondary"
         android:layout_below="@+id/btnSignIn"
         android:layout_alignLeft="@+id/btnSignIn"
         android:layout_alignStart="@+id/btnSignIn"
         android:layout_alignRight="@+id/btnSignIn"
         android:layout_alignEnd="@+id/btnSignIn" />
 
-</RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ivLogo"
+            android:src="@drawable/logo_solid"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:maxHeight="200dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>
