@@ -17,21 +17,30 @@ public class LaunchActivity extends ActionBarActivity {
         NetworkTasks.init(getApplicationContext());
 
 
+        startActivity(new Intent(LaunchActivity.this, LoginActivity.class));
+
+
+
 
         if(PreferenceStorage.isFirstLaunch()){
 
             PreferenceStorage.setFirstLaunch();
-            startActivity(new Intent(LaunchActivity.this, SignUpActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+            Intent intent = new Intent(LaunchActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra("showSignUp", true);
+            startActivity(intent);
             overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         }
 
         else {
 
             if(PreferenceStorage.isLoggedIn()){
-                startActivity(new Intent(LaunchActivity.this, FakeHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(LaunchActivity.this, DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
             }else{
-                startActivity(new Intent(LaunchActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                Intent intent = new Intent(LaunchActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("showSignUp", false);
+                startActivity(intent);
                 overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
             }
         }

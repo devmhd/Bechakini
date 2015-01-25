@@ -1,2 +1,3 @@
-include ':app', ':Crouton'
+include ':app', ':Crouton', ':FragmentTransactionExtended'
 project(':Crouton').projectDir = new File('libs/crouton')
+project(':FragmentTransactionExtended').projectDir = new File('libs/LibraryFragmentTransactionExtended')

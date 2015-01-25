@@ -27,90 +27,30 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 public class LoginActivity extends ActionBarActivity {
 
 
-    Button btnNewAccount, btnSignin;
-    EditText etEmail, etPass;
-    ProgressDialog progressDialog;
-    LoginNetworkTask loginNetworkTask;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        initGUI();
-    }
 
+        boolean showSignUp = getIntent().getExtras().getBoolean("showSignUp", false);
 
-    public final static boolean isValidEmail(CharSequence target) {
-        if (TextUtils.isEmpty(target)) {
-            return false;
+        if(showSignUp){
+            getFragmentManager()	.beginTransaction()
+                    .replace(R.id.content_frame, new SignupFragment())
+                    .commit();
         } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+            getFragmentManager()	.beginTransaction()
+                    .replace(R.id.content_frame, new LoginFragment())
+                    .commit();
         }
-    }
-
-    boolean validateInputs(){
-
-           String email = etEmail.getText().toString();
-           String pass = etPass.getText().toString();
-
-
-
-           if(email.isEmpty()){
-               Crouton.makeText(this, "Email needed", Style.ALERT).show();
-               return false;
-           }
-
-           if(pass.isEmpty()){
-               Crouton.makeText(this, "Need a password", Style.ALERT).show();
-               return false;
-           }
-
-           if(!isValidEmail(email)){
-               Crouton.makeText(this, "Email not valid", Style.ALERT).show();
-               return false;
-           }
-
-           return true;
-
 
     }
 
-    void initGUI(){
-
-        btnNewAccount = (Button) findViewById(R.id.btnNewAccount);
-        btnSignin = (Button) findViewById(R.id.btnSignIn);
-
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etPass = (EditText) findViewById(R.id.etPass);
 
 
-        btnSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(validateInputs()){
-                    loginNetworkTask = new LoginNetworkTask();
-                    loginNetworkTask.execute(
-                            etEmail.getText().toString(),
-                            etPass.getText().toString()
-                    );
-                }
-
-            }
-        });
-
-
-        btnNewAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
-            }
-        });
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -135,77 +75,5 @@ public class LoginActivity extends ActionBarActivity {
     }
 
 
-    private class LoginNetworkTask extends AsyncTask<String, Void, JSONObject> {
 
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            progressDialog = ProgressDialog.show(LoginActivity.this, "", "Logging in...");
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... params) {
-
-            JSONObject searchResponse = null;
-
-            try {
-
-                ArrayList<NameValuePair> postVars = new ArrayList<NameValuePair>();
-
-
-                postVars.add(new BasicNameValuePair(APISpecs.POST_LOGIN_EMAIL, (String)params[0]));
-                postVars.add(new BasicNameValuePair(APISpecs.POST_LOGIN_PASSWORD, (String)params[1]));
-
-
-                searchResponse = NetworkTasks.getJsonObject(APISpecs.URL_BASE + APISpecs.SUBMIT_LOGIN, postVars, true);
-
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-
-            return searchResponse;
-
-
-        }
-
-        protected void onPostExecute(JSONObject response) {
-
-            //Toast.makeText(getApplicationContext(), searchResponse.toString(), Toast.LENGTH_SHORT).show();
-
-
-            progressDialog.dismiss();
-
-            try {
-                boolean success = response.getBoolean("success");
-
-
-                if(success){
-                    PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
-                    PreferenceStorage.setLoggerPassword(etPass.getText().toString());
-
-                    PreferenceStorage.setLoggedIn(true);
-
-                    startActivity(new Intent(LoginActivity.this, FakeHomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                }else{
-
-                    Crouton.makeText(LoginActivity.this, "Incorrect email-password combination", Style.ALERT).show();
-                }
-
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-
-        };
-
-    }
 }

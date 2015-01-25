@@ -19,14 +19,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpActivity"
-            android:label="Sign Up" >
+            android:name=".DashboardActivity"
+            android:label="@string/title_activity_dashboard" >
         </activity>
         <activity
-            android:name=".FakeHomeActivity"
-            android:label="@string/title_activity_fake_home" >
-        </activity>
-        <activity
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>

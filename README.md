@@ -4,6 +4,7 @@ Bechakini is an android application, being developed as a participant of the Cod
 
 ##Dependencies
 * [Crouton] 
+* [FragmentTransactionExtended]
 
 ##Special Notes
 
@@ -19,4 +20,6 @@ Server also accepts all signup requests.
 
 [Code-Warriors Challenge 2015]:http://codewarrior.bitm.org.bd/
 [Crouton]:https://github.com/keyboardsurfer/Crouton
+[FragmentTransactionExtended]:https://github.com/DesarrolloAntonio/FragmentTransactionExtended
+
 
