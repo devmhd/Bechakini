@@ -8,6 +8,8 @@
     <string name="title_activity_dashboard">Bechakini</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_update_profile">UpdateProfileActivity</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
 
 </resources>

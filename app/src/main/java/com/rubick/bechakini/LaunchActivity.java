@@ -15,6 +15,7 @@ public class LaunchActivity extends ActionBarActivity {
 
         PreferenceStorage.init(getApplicationContext());
         NetworkTasks.init(getApplicationContext());
+        HardConstants.init();
 
 
         startActivity(new Intent(LaunchActivity.this, LoginActivity.class));

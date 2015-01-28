@@ -3,7 +3,7 @@ package com.rubick.bechakini;
 /**
  * Created by Mehedee Zaman on 1/21/2015.
  */
-public class APISpecs {
+public final class APISpecs {
 
     public static final String URL_BASE = "http://beta.codehoundbd.com/bechakini/";
 
