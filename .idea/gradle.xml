@@ -10,8 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/libs/LibraryFragmentTransactionExtended" />
-            <option value="$PROJECT_DIR$/libs/crouton" />
+            <option value="$PROJECT_DIR$/libs/FragmentTransactionExtended" />
           </set>
         </option>
       </GradleProjectSettings>

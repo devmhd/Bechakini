@@ -10,18 +10,22 @@ public final class HardConstants {
     public static ArrayList<Division> divisions;
     public static ArrayList<Category> adCategories;
 
+
+    public static ArrayList<SearchResult> demoresults;
+
     public static void init(){
 
 
         adCategories = new ArrayList<Category>();
 
-        adCategories.add(new Category("Electronics",1));
-        adCategories.add(new Category("Home Appliances",1));
-        adCategories.add(new Category("Vehicles",1));
-        adCategories.add(new Category("Personal",1));
-        adCategories.add(new Category("Sport",1));
-        adCategories.add(new Category("Education",1));
-        adCategories.add(new Category("Agriculture",1));
+        adCategories.add(new Category("All",1));
+        adCategories.add(new Category("Electronics",2));
+        adCategories.add(new Category("Home Appliances",3));
+        adCategories.add(new Category("Vehicles",4));
+        adCategories.add(new Category("Personal",5));
+        adCategories.add(new Category("Sport",6));
+        adCategories.add(new Category("Education",7));
+        adCategories.add(new Category("Agriculture",8));
 
         District dhaka = new District("Dhaka", 1);
         dhaka.addArea(new Area("Basabo", 1));
@@ -47,11 +51,26 @@ public final class HardConstants {
         dhakaDivision.addDistrict(gazipur);
 
 
+        divisions = new ArrayList<Division>();
         divisions.add(dhakaDivision);
 
+
+        demoresults = new ArrayList<SearchResult>();
+
+        demoresults.add(new SearchResult("Macbook Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Mac Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Lenovo", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Macbook Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Macbook Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Macbook Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Mac Air", 40000, "", "Dhaka", "Motijheel"));
+        demoresults.add(new SearchResult("Lenovo", 40000, "", "Dhaka", "Motijheel"));
 
 
 
     }
+
+
+
 
 }

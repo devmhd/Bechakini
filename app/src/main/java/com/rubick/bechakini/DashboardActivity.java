@@ -1,13 +1,16 @@
 package com.rubick.bechakini;
 
 
+
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,15 +18,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.astuetz.PagerSlidingTabStrip;
 
 
-public class DashboardActivity extends ActionBarActivity {
+public class DashboardActivity extends ActionBarActivity{
 
-    private String[] mPlanetTitles;
+
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+
     private ActionBarDrawerToggle mDrawerToggle;
+    private CategoriesPagerAdapter categoryPagerAdapter;
+    PagerSlidingTabStrip slidingTabStrip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +38,12 @@ public class DashboardActivity extends ActionBarActivity {
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-     //   mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        // Set the adapter for the list view
-      //  mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-            //    android.R.layout.simple_list_item_1, mPlanetTitles));
-        // Set the list's click listener
-        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer icon to replace 'Up' caret */
+
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         ) {
@@ -51,13 +51,13 @@ public class DashboardActivity extends ActionBarActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle("Closed");
+                getSupportActionBar().setTitle(R.string.drawer_close);
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Open");
+                getSupportActionBar().setTitle(R.string.drawer_open);
             }
         };
 
@@ -66,6 +66,8 @@ public class DashboardActivity extends ActionBarActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        initPager();
     }
 
     void logout(){
@@ -89,14 +91,25 @@ public class DashboardActivity extends ActionBarActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    void initPager(){
 
+        categoryPagerAdapter = new CategoriesPagerAdapter(getSupportFragmentManager());
+
+        ViewPager pager = (ViewPager) findViewById(R.id.tabViewPager);
+        pager.setAdapter(new CategoriesPagerAdapter(getSupportFragmentManager()));
+
+        slidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabStrip);
+        slidingTabStrip.setViewPager(pager);
+
+
+
+
+    }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -105,7 +118,6 @@ public class DashboardActivity extends ActionBarActivity {
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
 
 
 
@@ -121,6 +133,8 @@ public class DashboardActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
     private class CategoriesPagerAdapter extends FragmentPagerAdapter {
@@ -152,7 +166,7 @@ public class DashboardActivity extends ActionBarActivity {
 
             }
 
-            return f;
+            return new AdListFragment();
 
         }
 

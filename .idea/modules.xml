@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bechakini.iml" filepath="$PROJECT_DIR$/Bechakini.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libs/crouton/Crouton.iml" filepath="$PROJECT_DIR$/libs/crouton/Crouton.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libs/LibraryFragmentTransactionExtended/FragmentTransactionExtended.iml" filepath="$PROJECT_DIR$/libs/LibraryFragmentTransactionExtended/FragmentTransactionExtended.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/FragmentTransactionExtended/FragmentTransactionExtended.iml" filepath="$PROJECT_DIR$/libs/FragmentTransactionExtended/FragmentTransactionExtended.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

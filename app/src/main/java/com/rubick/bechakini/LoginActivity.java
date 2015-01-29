@@ -35,7 +35,7 @@ public class LoginActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
 
 
-        boolean showSignUp = getIntent().getExtras().getBoolean("showSignUp", false);
+        boolean showSignUp = getIntent().getBooleanExtra("showSignUp", false);
 
         if(showSignUp){
             getFragmentManager()	.beginTransaction()

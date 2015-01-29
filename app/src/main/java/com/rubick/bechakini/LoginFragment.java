@@ -1,12 +1,15 @@
 package com.rubick.bechakini;
 
 
+
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
+
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,27 +151,9 @@ public class LoginFragment extends Fragment {
         @Override
         protected JSONObject doInBackground(String... params) {
 
-            JSONObject searchResponse = null;
-
-            try {
-
-                ArrayList<NameValuePair> postVars = new ArrayList<NameValuePair>();
 
 
-                postVars.add(new BasicNameValuePair(APISpecs.POST_LOGIN_EMAIL, (String)params[0]));
-                postVars.add(new BasicNameValuePair(APISpecs.POST_LOGIN_PASSWORD, (String)params[1]));
-
-
-                searchResponse = NetworkTasks.getJsonObject(APISpecs.URL_BASE + APISpecs.SUBMIT_LOGIN, postVars, true);
-
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-
-            return searchResponse;
+            return null;
 
 
         }
@@ -180,11 +165,7 @@ public class LoginFragment extends Fragment {
 
             progressDialog.dismiss();
 
-            try {
-                boolean success = response.getBoolean("success");
 
-
-                if(success){
                     PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
                     PreferenceStorage.setLoggerPassword(etPass.getText().toString());
 
@@ -192,17 +173,6 @@ public class LoginFragment extends Fragment {
 
                     startActivity(new Intent(getActivity(), DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
-                }else{
-
-                    Crouton.makeText(getActivity(), "Incorrect email-password combination", Style.ALERT).show();
-                }
-
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
 
 

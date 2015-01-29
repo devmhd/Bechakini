@@ -14,6 +14,7 @@ public class Division {
     public Division(String name, int id) {
         this.name = name;
         this.id = id;
+        this.districts = new ArrayList<District>();
     }
 
     public void addDistrict(District d){

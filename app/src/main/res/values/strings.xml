@@ -2,14 +2,12 @@
 <resources>
 
     <string name="app_name">Bechakini</string>
-
     <string name="action_settings">Settings</string>
-
     <string name="title_activity_dashboard">Bechakini</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_update_profile">UpdateProfileActivity</string>
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
-
+    <string name="drawer_open">Bechakini</string>
+    <string name="drawer_close">Bechakini</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
