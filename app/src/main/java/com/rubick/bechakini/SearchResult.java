@@ -18,4 +18,9 @@ public class SearchResult {
         this.districtName = districtName;
         this.areaName = areaName;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + areaName + " " + districtName;
+    }
 }

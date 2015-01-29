@@ -1,4 +1,4 @@
-package com.rubick.bechakini.InfiniteScroll;
+package com.rubick.bechakini.lib;
 
 import android.content.Context;
 import android.view.LayoutInflater;

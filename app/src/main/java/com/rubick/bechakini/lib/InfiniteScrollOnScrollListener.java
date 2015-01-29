@@ -1,8 +1,6 @@
-package com.rubick.bechakini.InfiniteScroll;
+package com.rubick.bechakini.lib;
 
 import android.widget.AbsListView;
-
-import com.rubick.bechakini.InfiniteScroll.IInfiniteScrollListener;
 
 public class InfiniteScrollOnScrollListener implements AbsListView.OnScrollListener {
 

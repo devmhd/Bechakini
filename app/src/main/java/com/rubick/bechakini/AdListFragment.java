@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
-import com.rubick.bechakini.InfiniteScroll.IInfiniteScrollListener;
-import com.rubick.bechakini.InfiniteScroll.InfiniteScrollListView;
-import com.rubick.bechakini.InfiniteScroll.InfiniteScrollOnScrollListener;
+import com.rubick.bechakini.lib.IInfiniteScrollListener;
+import com.rubick.bechakini.lib.InfiniteScrollListView;
+import com.rubick.bechakini.lib.InfiniteScrollOnScrollListener;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,6 @@ public class AdListFragment extends Fragment {
     public AdListFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,8 +63,8 @@ public class AdListFragment extends Fragment {
 
         listView.appendItems(HardConstants.demoresults);
 
-
     }
+
 
     private class ListTask extends AsyncTask<Integer, Void, ArrayList<SearchResult>> {
 
@@ -79,10 +78,10 @@ public class AdListFragment extends Fragment {
 
             ArrayList<SearchResult> items = new ArrayList<SearchResult>();
             if (params[0] < 90) {
-              //  for (int i = params[0]; i < (params[0] + 8); i++) {
+                //  for (int i = params[0]; i < (params[0] + 8); i++) {
                 //    String str = "Index: " + String.valueOf(i);
-                    items.addAll(HardConstants.demoresults);
-               // }
+                items.addAll(HardConstants.demoresults);
+                // }
             }
             return items;
         }

@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.rubick.bechakini.InfiniteScroll.InfiniteScrollAdapter;
+import com.rubick.bechakini.lib.InfiniteScrollAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,14 +64,13 @@ public class SearchResultListAdapter extends InfiniteScrollAdapter {
 
         View v = convertView;
 
-        if(v==null)
-        {
+
             //Log.d("NULL", "VIIIEWWWW NNUUULLLLLL");
-         //   LayoutInflater li = (LayoutInflater)context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            //   LayoutInflater li = (LayoutInflater)context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
 
             v = inflater.inflate(R.layout.search_result_row, null);
-        }
+
 
         TextView tvName, tvLocation, tvPrice;
         ImageView ivThumb;

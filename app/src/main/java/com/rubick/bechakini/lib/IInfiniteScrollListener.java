@@ -1,4 +1,4 @@
-package com.rubick.bechakini.InfiniteScroll;
+package com.rubick.bechakini.lib;
 
 public interface IInfiniteScrollListener {
     public void endIsNear();
