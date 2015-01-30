@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -68,7 +69,22 @@ public class DashboardActivity extends ActionBarActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
 
         initPager();
+        initDrawerActions();
     }
+
+    void initDrawerActions(){
+
+        RelativeLayout btnNewAd = (RelativeLayout) findViewById(R.id.drawer_btn_newad);
+        btnNewAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              startActivity(new Intent(DashboardActivity.this, UploadPhotoActivity.class));
+            }
+        });
+
+
+    }
+
 
     void logout(){
 
@@ -101,9 +117,6 @@ public class DashboardActivity extends ActionBarActivity{
         slidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabStrip);
         slidingTabStrip.setViewPager(pager);
 
-
-
-
     }
 
 
@@ -115,11 +128,7 @@ public class DashboardActivity extends ActionBarActivity{
             return true;
         }
 
-
         int id = item.getItemId();
-
-
-
 
         if (id == R.id.action_update_profile) {
 
@@ -133,9 +142,6 @@ public class DashboardActivity extends ActionBarActivity{
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
     private class CategoriesPagerAdapter extends FragmentPagerAdapter {
 

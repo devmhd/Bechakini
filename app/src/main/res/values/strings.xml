@@ -9,5 +9,10 @@
     <string name="drawer_open">Bechakini</string>
     <string name="drawer_close">Bechakini</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_post_ad">PostAdActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_upload_photo">UploadPhotoActivity</string>
+    <string name="title_activity_ad_detail">AdDetailActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 
 </resources>

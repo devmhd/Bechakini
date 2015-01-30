@@ -114,11 +114,16 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(validateInputs()){
-                    loginNetworkTask = new LoginNetworkTask();
-                    loginNetworkTask.execute(
-                            etEmail.getText().toString(),
-                            etPass.getText().toString()
-                    );
+//                    loginNetworkTask = new LoginNetworkTask();
+//                    loginNetworkTask.execute(
+//                            etEmail.getText().toString(),
+//                            etPass.getText().toString()
+//                    );
+
+                    //TODO Volley
+
+
+                    startActivity(new Intent(getActivity(), HomeActivity.class));
                 }
 
             }

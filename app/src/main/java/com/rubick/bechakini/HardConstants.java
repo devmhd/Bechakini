@@ -7,8 +7,16 @@ import java.util.ArrayList;
  */
 public final class HardConstants {
 
-    public static ArrayList<Division> divisions;
+
+    public static final int MIN_PHONE_LENGTH = 7;
+    public static final int MAX_PHONE_LENGTH = 14;
+
+
+    public static final String ADLISTFRAGMENT_ARG_REQUESTURL = "requestUrl";
+    public static final String ADLISTFRAGMENT_ARG_MAXLOADCOUNT = "maxLoadCount";
+
     public static ArrayList<Category> adCategories;
+    public static ArrayList<Area> areas;
 
 
     public static ArrayList<SearchResult> demoresults;
@@ -18,41 +26,19 @@ public final class HardConstants {
 
         adCategories = new ArrayList<Category>();
 
-        adCategories.add(new Category("All",1));
-        adCategories.add(new Category("Electronics",2));
-        adCategories.add(new Category("Home Appliances",3));
-        adCategories.add(new Category("Vehicles",4));
-        adCategories.add(new Category("Personal",5));
-        adCategories.add(new Category("Sport",6));
-        adCategories.add(new Category("Education",7));
-        adCategories.add(new Category("Agriculture",8));
+        Category electronics = new Category("Electronics");
 
-        District dhaka = new District("Dhaka", 1);
-        dhaka.addArea(new Area("Basabo", 1));
-        dhaka.addArea(new Area("Khilgaon", 2));
-        dhaka.addArea(new Area("Motijheel", 3));
-        dhaka.addArea(new Area("Malibagh", 4));
-        dhaka.addArea(new Area("Kamalapur", 5));
-        dhaka.addArea(new Area("Shahbagh", 6));
-        dhaka.addArea(new Area("BUET Campus", 7));
-        dhaka.addArea(new Area("DU Campus", 8));
-
-        District gazipur = new District("Gazipur",2);
-
-        gazipur.addArea(new Area("abc",1));
-        gazipur.addArea(new Area("ere",2));
-        gazipur.addArea(new Area("acsdcbc",3));
-        gazipur.addArea(new Area("absc",4));
-        gazipur.addArea(new Area("reter",5));
-
-        Division dhakaDivision = new Division("Dhaka",1);
-
-        dhakaDivision.addDistrict(dhaka);
-        dhakaDivision.addDistrict(gazipur);
+        electronics.addSubCategory(new SubCategory("Mobile", "mocky.io", new String[]{"field1", "field2", "Producer","Brand","Operating System"}));
+        electronics.addSubCategory(new SubCategory("Mobile", "mocky.io", new String[]{"field1", "field2", "Producer","Brand","Operating System"}));
 
 
-        divisions = new ArrayList<Division>();
-        divisions.add(dhakaDivision);
+        adCategories.add(electronics);
+
+
+
+
+
+
 
 
         demoresults = new ArrayList<SearchResult>();
@@ -65,6 +51,12 @@ public final class HardConstants {
         demoresults.add(new SearchResult("Macbook Air", 40000, "", "Dhaka", "Motijheel"));
         demoresults.add(new SearchResult("Mac Air", 40000, "", "Dhaka", "Motijheel"));
         demoresults.add(new SearchResult("Lenovo", 40000, "", "Dhaka", "Motijheel"));
+
+
+
+        areas = new
+
+
 
 
 

@@ -1,0 +1,122 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+
+    >
+
+
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.rubick.bechakini.AdDetailActivity">
+
+    <com.rubick.bechakini.SquareImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad_detail_photo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/laptop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A000"
+        android:layout_alignBottom="@+id/ad_detail_photo"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:text="Macbook Air"
+            android:id="@+id/ad_detail_tv_title"
+
+            android:textAppearance="?android:attr/textAppearanceLargeInverse"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tk 55,000"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:id="@+id/ad_detail_tv_price"
+            android:textAppearance="?android:attr/textAppearanceLargeInverse"
+            android:textColor="@color/primary"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a great laptop. Used only for 6 months. Nice looking metal finish. Guranteed satisfaction"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="30dp"
+        android:textColor="#111"
+        android:id="@+id/ad_detail_tv_description"
+        android:layout_below="@+id/ad_detail_tv_posted"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+       />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Posted by Rahim on Jan 23, 3:33 PM"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="30dp"
+        android:gravity="end"
+        android:id="@+id/ad_detail_tv_posted"
+        android:layout_below="@+id/ad_detail_photo"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Under Electronics in Motijheel, Dhaka"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="30dp"
+
+        android:layout_marginTop="50dp"
+        android:id="@+id/ad_detail_tv_location"
+        android:layout_below="@+id/ad_detail_tv_description"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/button"
+
+        android:background="@drawable/fb_share"
+
+        android:layout_below="@+id/ad_detail_tv_location"
+        android:layout_alignParentBottom="true"
+         />
+
+
+</RelativeLayout>
+</ScrollView>

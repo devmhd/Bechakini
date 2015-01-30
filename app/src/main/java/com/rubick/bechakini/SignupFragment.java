@@ -34,7 +34,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 public class SignupFragment extends Fragment {
 
 
-    EditText etName, etPass, etConfPass, etEmail;
+    EditText etName, etPass, etConfPass, etEmail, etPhone;
     Button btnSignUp, btnAlreadyHaveAcc;
 
     SignUpNetworkTask signUpTask;
@@ -68,8 +68,11 @@ public class SignupFragment extends Fragment {
 
 
                 if(validateInputs()){
-                    signUpTask = new SignUpNetworkTask();
-                    signUpTask.execute(name, email, pass);
+//                    signUpTask = new SignUpNetworkTask();
+//                    signUpTask.execute(name, email, pass);
+
+                    //TODO Volley
+                    startActivity(new Intent(getActivity(), DashboardActivity.class));
 
                 }
 
@@ -106,7 +109,7 @@ public class SignupFragment extends Fragment {
         String email = etEmail.getText().toString();
         String pass = etPass.getText().toString();
         String pass2 = etConfPass.getText().toString();
-
+        String phone = etPhone.getText().toString();
 
         if(name.isEmpty()){
             Crouton.makeText(getActivity(), "Need a name", Style.ALERT).show();
@@ -134,6 +137,12 @@ public class SignupFragment extends Fragment {
             return false;
         }
 
+        if(phone.length() > HardConstants.MAX_PHONE_LENGTH ||
+                phone.length() < HardConstants.MIN_PHONE_LENGTH){
+            Crouton.makeText(getActivity(), "Invalid Phone number", Style.ALERT).show();
+            return false;
+        }
+
         return true;
 
 
@@ -146,6 +155,7 @@ public class SignupFragment extends Fragment {
         etPass = (EditText) getView().findViewById(R.id.etPass);
         etConfPass = (EditText) getView().findViewById(R.id.etConfPass);
         etEmail = (EditText) getView().findViewById(R.id.etEmail);
+        etPhone = (EditText) getView().findViewById(R.id.signup_et_phone);
 
         btnSignUp = (Button) getView().findViewById(R.id.btnSignIn);
         btnAlreadyHaveAcc = (Button) getView().findViewById(R.id.btnAlreadyHaveAcc);
@@ -178,7 +188,6 @@ public class SignupFragment extends Fragment {
                 postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_NAME,params[0]));
                 postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_EMAIL, params[1]));
                 postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_PASSWORD, params[2]));
-
 
                 searchResponse = NetworkTasks.getJsonObject(APISpecs.URL_BASE + APISpecs.SUBMIT_SIGNUP, postVars, true);
 

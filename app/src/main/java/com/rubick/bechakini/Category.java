@@ -1,15 +1,21 @@
 package com.rubick.bechakini;
 
+import java.util.ArrayList;
+
 /**
  * Created by Mehedee Zaman on 1/28/2015.
  */
 public class Category {
 
     public String name;
-    public int id;
+    public ArrayList<SubCategory> subCategories;
 
-    public Category(String name, int id) {
+    public Category(String name) {
         this.name = name;
-        this.id = id;
+        subCategories = new ArrayList<SubCategory>();
+    }
+
+    public void addSubCategory(SubCategory sub){
+        this.subCategories.add(sub);
     }
 }

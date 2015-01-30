@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.rubick.bechakini.PostAdActivity">
+
+    <item android:id="@+id/action_ok" android:title="OK" android:icon="@drawable/ic_tick" app:showAsAction="always" />
+    <item android:id="@+id/action_cancel" android:title="CANCEL" android:icon="@drawable/ic_launcher" app:showAsAction="always" />
+
+
+</menu>

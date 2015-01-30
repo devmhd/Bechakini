@@ -97,10 +97,12 @@ public class SearchResultListAdapter extends InfiniteScrollAdapter {
         ivThumb = (ImageView) v.findViewById(R.id.ivThumb);
         ivThumb.setImageResource(R.drawable.laptop);
 
-//        v.setTag(listArray.get(position).getPersonId());
+//      v.setTag(listArray.get(position).getPersonId());
 
         return v;
     }
+
+
 
 
     @Override

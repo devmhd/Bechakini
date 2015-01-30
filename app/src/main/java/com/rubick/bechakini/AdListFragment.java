@@ -1,6 +1,7 @@
 package com.rubick.bechakini;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 
@@ -25,6 +27,9 @@ public class AdListFragment extends Fragment {
     InfiniteScrollListView listView;
     ListTask listTask;
 
+    String requestUrl;
+    int maxLoadCount;
+
     public AdListFragment() {
         // Required empty public constructor
     }
@@ -32,8 +37,16 @@ public class AdListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        requestUrl = getArguments().getString(HardConstants.ADLISTFRAGMENT_ARG_REQUESTURL);
+        maxLoadCount = getArguments().getInt(HardConstants.ADLISTFRAGMENT_ARG_MAXLOADCOUNT);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_ad_list, container, false);
+
+
+
     }
 
     @Override
@@ -63,6 +76,13 @@ public class AdListFragment extends Fragment {
 
         listView.appendItems(HardConstants.demoresults);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getActivity(), AdDetailActivity.class));
+            }
+        });
+
     }
 
 
@@ -77,7 +97,7 @@ public class AdListFragment extends Fragment {
             }
 
             ArrayList<SearchResult> items = new ArrayList<SearchResult>();
-            if (params[0] < 90) {
+            if (params[0] < maxLoadCount) {
                 //  for (int i = params[0]; i < (params[0] + 8); i++) {
                 //    String str = "Index: " + String.valueOf(i);
                 items.addAll(HardConstants.demoresults);
