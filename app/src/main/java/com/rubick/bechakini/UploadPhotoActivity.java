@@ -94,7 +94,9 @@ public class UploadPhotoActivity extends ActionBarActivity implements View.OnCli
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_ok) {
+
+            startActivity(new Intent(UploadPhotoActivity.this, HomeActivity.class));
             return true;
         }
 

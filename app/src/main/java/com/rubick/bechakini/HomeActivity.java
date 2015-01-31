@@ -260,6 +260,13 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
+        mViewFlipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,AdDetailActivity.class));
+            }
+        });
+
 
 
     }
