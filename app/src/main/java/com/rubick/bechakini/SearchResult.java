@@ -7,20 +7,18 @@ public class SearchResult {
 
     public String name;
     public String areaName;
-    public String districtName;
     public String photoUrl;
-    public int price;
+    public String price;
 
-    public SearchResult(String name, int price, String photoUrl, String districtName, String areaName) {
+    public SearchResult(String name, String price, String photoUrl, String areaName) {
         this.name = name;
         this.price = price;
         this.photoUrl = photoUrl;
-        this.districtName = districtName;
         this.areaName = areaName;
     }
 
     @Override
     public String toString() {
-        return name + " " + areaName + " " + districtName;
+        return name + " " + areaName ;
     }
 }

@@ -105,6 +105,32 @@ public class PreferenceStorage {
     }
 
 
+    public static String getLoggerLocation()
+    {
+
+        return PreferenceManager.getDefaultSharedPreferences(appContext).getString("loggerLocation", "");
+
+
+    }
+
+    public static boolean setLoggerLocation(String name)
+    {
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(appContext).edit();
+        editor.putString("loggerLocation", name);
+
+        return editor.commit();
+
+
+    }
+
+
+
+
+
+
+
+
 
 
 }

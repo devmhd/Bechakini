@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Bechakini</string>
+    <string name="app_name">Klassify</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_dashboard">Bechakini</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_update_profile">UpdateProfileActivity</string>
-    <string name="drawer_open">Bechakini</string>
-    <string name="drawer_close">Bechakini</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_post_ad">PostAdActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_upload_photo">UploadPhotoActivity</string>
-    <string name="title_activity_ad_detail">AdDetailActivity</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_dashboard">Klassify</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_update_profile">Update Profile</string>
+    <string name="drawer_open">Klassify</string>
+    <string name="drawer_close">Klassify</string>
+
+    <string name="title_activity_post_ad">Post A New Ad</string>
+
+    <string name="title_activity_upload_photo">Upload Photos</string>
+    <string name="title_activity_ad_detail">Product Details</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_filtered_ad_list">Filtered Results</string>
 
 </resources>

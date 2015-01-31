@@ -1,8 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.rubick.bechakini.FakeHomeActivity">
+    tools:context="com.rubick.bechakini.DashboardActivity">
 
+
+    <item android:id="@+id/action_dashboard_filter" android:title="Filter"
+         app:showAsAction="always" android:icon="@drawable/ic_filter"/>
 
     <item android:id="@+id/action_update_profile" android:title="Update Profile"
         android:orderInCategory="99" app:showAsAction="never" />

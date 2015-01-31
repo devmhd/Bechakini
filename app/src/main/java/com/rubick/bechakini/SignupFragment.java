@@ -7,7 +7,6 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 
@@ -17,12 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -37,7 +39,7 @@ public class SignupFragment extends Fragment {
     EditText etName, etPass, etConfPass, etEmail, etPhone;
     Button btnSignUp, btnAlreadyHaveAcc;
 
-    SignUpNetworkTask signUpTask;
+
 
     ProgressDialog progressDialog;
 
@@ -68,11 +70,54 @@ public class SignupFragment extends Fragment {
 
 
                 if(validateInputs()){
-//                    signUpTask = new SignUpNetworkTask();
-//                    signUpTask.execute(name, email, pass);
 
-                    //TODO Volley
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    progressDialog = ProgressDialog.show(getActivity(), "", "Wait a second");
+
+                    String requestUrl = "http://www.mocky.io/v2/54cbbdb296d6b26f12431f90";
+                    JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, requestUrl, null,
+                            new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject responseJson) {
+                                    try {
+
+                                        if(responseJson.getBoolean("success")){
+                                            progressDialog.dismiss();
+
+                                            PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
+                                            PreferenceStorage.setLoggerName(etName.getText().toString());
+                                            PreferenceStorage.setLoggerPassword(etPass.getText().toString());
+
+                                            PreferenceStorage.setLoggedIn(true);
+
+                                            startActivity(new Intent(getActivity(), DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+
+
+                                        }
+
+                                    }
+                                    catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                            },
+
+                            new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Network Error" , Toast.LENGTH_LONG).show();
+
+                                }
+
+                            });
+
+                    VolleySingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().add(jsonRequest);
+
+
 
                 }
 
@@ -86,7 +131,7 @@ public class SignupFragment extends Fragment {
                 FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
                 ft.replace(R.id.content_frame, new LoginFragment())
-                .commit();
+                        .commit();
             }
         });
 
@@ -153,7 +198,7 @@ public class SignupFragment extends Fragment {
     void initGUI(){
         etName = (EditText) getView().findViewById(R.id.etName);
         etPass = (EditText) getView().findViewById(R.id.etPass);
-        etConfPass = (EditText) getView().findViewById(R.id.etConfPass);
+        etConfPass = (EditText) getView().findViewById(R.id.update_et_oldpass);
         etEmail = (EditText) getView().findViewById(R.id.etEmail);
         etPhone = (EditText) getView().findViewById(R.id.signup_et_phone);
 
@@ -165,60 +210,4 @@ public class SignupFragment extends Fragment {
     }
 
 
-
-    private class SignUpNetworkTask extends AsyncTask<String, Void, JSONObject> {
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            progressDialog = ProgressDialog.show(getActivity(), "", "Wait a second");
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... params) {
-
-            JSONObject searchResponse = null;
-
-            try {
-
-                ArrayList<NameValuePair> postVars = new ArrayList<NameValuePair>();
-
-                postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_NAME,params[0]));
-                postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_EMAIL, params[1]));
-                postVars.add(new BasicNameValuePair(APISpecs.POST_SIGNUP_PASSWORD, params[2]));
-
-                searchResponse = NetworkTasks.getJsonObject(APISpecs.URL_BASE + APISpecs.SUBMIT_SIGNUP, postVars, true);
-
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-
-            return searchResponse;
-
-
-        }
-
-        protected void onPostExecute(JSONObject searchResponse) {
-
-
-
-            progressDialog.dismiss();
-
-            PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
-            PreferenceStorage.setLoggerName(etName.getText().toString());
-            PreferenceStorage.setLoggerPassword(etPass.getText().toString());
-
-            PreferenceStorage.setLoggedIn(true);
-
-            startActivity(new Intent(getActivity(), DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-
-
-        };
-
-    }
 }

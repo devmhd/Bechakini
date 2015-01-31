@@ -5,6 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class PostAdActivity extends ActionBarActivity {
@@ -13,6 +17,38 @@ public class PostAdActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_ad);
+
+
+        final Spinner spCat, spSubCat;
+
+        spCat = (Spinner) findViewById(R.id.postad_sp_category);
+        spSubCat = (Spinner) findViewById(R.id.postad_sp_subcategory);
+
+
+        spCat.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, HardConstants.categoryStringArray));
+
+        spCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String[] arr = new String[HardConstants.adCategories.get(position).subCategories.size()];
+
+                for(int i = 0; i< HardConstants.adCategories.get(position).subCategories.size() ; ++i){
+                    arr[i] = HardConstants.adCategories.get(position).subCategories.get(i).name;
+
+                }
+
+                spSubCat.setAdapter(new ArrayAdapter<>(PostAdActivity.this, android.R.layout.simple_list_item_1, arr));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
 

@@ -35,7 +35,7 @@ public class InfiniteScrollOnScrollListener implements AbsListView.OnScrollListe
                     int bottom = listView.getChildAt(last).getBottom();
                     int count = listView.getCount();
                     int height = listView.getHeight();
-                    if (last == count - 1 && bottom <= height) {
+                    if ((count == 0 )|| (last == count - 1 && bottom <= height)) {
                         listener.endIsNear();
                     }
                 }

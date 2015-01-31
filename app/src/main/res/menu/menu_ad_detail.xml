@@ -2,6 +2,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.rubick.bechakini.AdDetailActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+
+
+    <item android:id="@+id/action_phone" android:title="Call"
+         app:showAsAction="always" android:icon="@drawable/ic_phone"/>
+
+
+    <item android:id="@+id/action_sms" android:title="SMS"
+        app:showAsAction="always" android:icon="@drawable/ic_sms"/>
+
+
+    <item android:id="@+id/action_fav" android:title="Favourite"
+        app:showAsAction="always" android:icon="@drawable/ic_star_holo"/>
+
+
+    <item android:id="@+id/action_share" android:title="Share"
+        app:showAsAction="always" android:icon="@drawable/ic_share"/>
+
 </menu>

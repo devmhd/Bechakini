@@ -66,7 +66,7 @@
         android:padding="10dp"
         android:background="@drawable/et_bg"
         android:layout_marginBottom="5dp"
-        android:id="@+id/etConfPass"
+        android:id="@+id/update_et_oldpass"
         android:layout_below="@+id/etPass"
         android:layout_alignLeft="@+id/etName"
         android:hint="Confirm Password"
@@ -79,14 +79,14 @@
         android:layout_height="wrap_content"
         android:text="SIGN UP"
         android:id="@+id/btnSignIn"
-        android:layout_below="@+id/etConfPass"
-        android:layout_alignLeft="@+id/etConfPass"
-        android:layout_alignStart="@+id/etConfPass"
+        android:layout_below="@+id/update_et_oldpass"
+        android:layout_alignLeft="@+id/update_et_oldpass"
+        android:layout_alignStart="@+id/update_et_oldpass"
         android:layout_marginTop="20dp"
         android:textColor="#fff"
         android:background="@drawable/btn_primary"
-        android:layout_alignRight="@+id/etConfPass"
-        android:layout_alignEnd="@+id/etConfPass" />
+        android:layout_alignRight="@+id/update_et_oldpass"
+        android:layout_alignEnd="@+id/update_et_oldpass" />
 
     <Button
         android:layout_width="wrap_content"
@@ -96,10 +96,10 @@
         android:layout_marginTop="10dp"
         android:textColor="#fff"
         android:layout_below="@+id/btnSignIn"
-        android:layout_alignLeft="@+id/etConfPass"
-        android:layout_alignStart="@+id/etConfPass"
+        android:layout_alignLeft="@+id/update_et_oldpass"
+        android:layout_alignStart="@+id/update_et_oldpass"
         android:background="@drawable/btn_secondary"
-        android:layout_alignRight="@+id/etConfPass"
-        android:layout_alignEnd="@+id/etConfPass" />
+        android:layout_alignRight="@+id/update_et_oldpass"
+        android:layout_alignEnd="@+id/update_et_oldpass" />
 
 </RelativeLayout>

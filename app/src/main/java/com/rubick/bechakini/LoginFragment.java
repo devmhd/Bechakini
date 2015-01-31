@@ -16,6 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -56,7 +62,7 @@ public class LoginFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-       initGUI();
+        initGUI();
 
 
 
@@ -114,16 +120,55 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(validateInputs()){
-//                    loginNetworkTask = new LoginNetworkTask();
-//                    loginNetworkTask.execute(
-//                            etEmail.getText().toString(),
-//                            etPass.getText().toString()
-//                    );
 
-                    //TODO Volley
+                    progressDialog = ProgressDialog.show(getActivity(), "", "Logging in...");
+
+                    String productUrl = "http://www.mocky.io/v2/54cbbdb296d6b26f12431f90";
+                    JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, productUrl, null,
+                            new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject object) {
+                                    try {
+
+                                        if(object.getBoolean("success")){
+                                            progressDialog.dismiss();
 
 
-                    startActivity(new Intent(getActivity(), HomeActivity.class));
+                                            PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
+                                            PreferenceStorage.setLoggerPassword(etPass.getText().toString());
+
+                                            PreferenceStorage.setLoggedIn(true);
+
+                                            startActivity(new Intent(getActivity(), HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+
+
+                                        }
+
+                                    }
+                                    catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                            },
+
+                            new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getActivity().getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                                }
+
+                            });
+
+                    VolleySingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().add(jsonRequest);
+
+
+//
                 }
 
             }
@@ -171,12 +216,12 @@ public class LoginFragment extends Fragment {
             progressDialog.dismiss();
 
 
-                    PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
-                    PreferenceStorage.setLoggerPassword(etPass.getText().toString());
+            PreferenceStorage.setLoggerEmail(etEmail.getText().toString());
+            PreferenceStorage.setLoggerPassword(etPass.getText().toString());
 
-                    PreferenceStorage.setLoggedIn(true);
+            PreferenceStorage.setLoggedIn(true);
 
-                    startActivity(new Intent(getActivity(), DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            startActivity(new Intent(getActivity(), DashboardActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
 
 
 

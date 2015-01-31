@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:orientation="vertical" tools:context="com.rubick.bechakini.AdListFragment">
+
+
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_adlist_progressbar"
+        android:visibility="visible"
+        android:layout_weight="1" />
+
+    <com.rubick.bechakini.lib.InfiniteScrollListView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:layout_height="0px"
+        android:id="@+id/ad_listview"
+        android:padding="10.0sp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        android:layout_gravity="left|top" />
+
+
+</LinearLayout>

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.rubick.bechakini.lib.InfiniteScrollAdapter;
 
 import java.util.ArrayList;
@@ -23,12 +24,13 @@ public class SearchResultListAdapter extends InfiniteScrollAdapter {
 
     ArrayList<SearchResult> results;
 
+    Context context;
 
 
     public SearchResultListAdapter(Context context, ArrayList<SearchResult> results) {
 
         super(context);
-
+           this.context = context;
         this.results = new ArrayList<SearchResult>();
 
 
@@ -59,14 +61,12 @@ public class SearchResultListAdapter extends InfiniteScrollAdapter {
     public View getRealView(LayoutInflater inflater, int position, View convertView, ViewGroup parent) {
 
 
-        Log.d("LISTVIEW","creating view " + position);
-        Log.d("LISTVIEW","array size  " + results.size());
+
 
         View v = convertView;
 
 
-            //Log.d("NULL", "VIIIEWWWW NNUUULLLLLL");
-            //   LayoutInflater li = (LayoutInflater)context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
 
 
             v = inflater.inflate(R.layout.search_result_row, null);
@@ -82,20 +82,24 @@ public class SearchResultListAdapter extends InfiniteScrollAdapter {
         SearchResult result = results.get(position);
 
         if(null == result){
-            Log.d("LISTVIEW","result null  " + results.size());
+
         }
 
         if(null == tvName){
-            Log.d("LISTVIEW","tv null  " + results.size());
+
         }
 
         tvName.setText(result.name);
 
         tvLocation = (TextView) v.findViewById(R.id.row_tv_location);
-        tvLocation.setText(results.get(position).areaName + ", " + results.get(position).districtName);
+        tvLocation.setText(results.get(position).areaName);
 
         ivThumb = (ImageView) v.findViewById(R.id.ivThumb);
-        ivThumb.setImageResource(R.drawable.laptop);
+
+        VolleySingleton.getInstance(context).getImageLoader().get(result.photoUrl,
+                ImageLoader.getImageListener(ivThumb,
+                        R.drawable.ic_wait, R.drawable.ic_error));
+
 
 //      v.setTag(listArray.get(position).getPersonId());
 

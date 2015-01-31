@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:orientation="vertical" android:padding="15dp" android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search keyword"
+        android:id="@+id/editTxt"
+        />
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <EditText
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:hint="Minimim Price"
+        android:layout_weight="1"
+        android:id="@+id/editText"
+        />
+
+    <EditText
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:hint="Maximum Price"
+        android:layout_weight="1"
+        android:id="@+id/editText2"/>
+
+
+
+    </LinearLayout>
+
+    <AutoCompleteTextView
+        android:hint="Location"
+        android:id="@+id/dialog_filter_locationAutoComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

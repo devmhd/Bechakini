@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="WHERE DO YOU LIVE"
+        android:text="CHOOSE A CATEGORY"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/textView"
@@ -47,7 +47,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/postad_sp_division"
+        android:id="@+id/postad_sp_category"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView" />
@@ -55,18 +55,35 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/postad_sp_district"
-        android:layout_below="@+id/postad_sp_division"
-        android:layout_alignLeft="@+id/postad_sp_division"
-        android:layout_alignStart="@+id/postad_sp_division" />
+        android:id="@+id/postad_sp_subcategory"
+        android:layout_below="@+id/postad_sp_category"
+        android:layout_alignLeft="@+id/postad_sp_category"
+        android:layout_alignStart="@+id/postad_sp_category" />
 
-    <Spinner
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/postad_sp_area"
-        android:layout_below="@+id/postad_sp_district"
-        android:layout_alignLeft="@+id/postad_sp_district"
-        android:layout_alignStart="@+id/postad_sp_district" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="SET A PRICE"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/textVieww"
+        android:layout_below="@+id/postad_sp_subcategory"
+        android:layout_alignLeft="@+id/postad_sp_subcategory"
+        android:layout_alignStart="@+id/postad_sp_subcategory" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postad_et_price"
+        android:hint="Price in taka"
+
+        android:layout_alignParentLeft="true"
+       android:layout_below="@+id/textVieww"
+        android:layout_alignParentRight="true"
+         />
+
+
 
 
 

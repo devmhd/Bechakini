@@ -6,13 +6,12 @@ package com.rubick.bechakini;
 public class Area {
 
     public String name;
-    public float lat;
-    public float lng;
+    public double lat;
+    public double lng;
 
-    public Area(String name) {
+    public Area(String name, double lat, double lng) {
         this.name = name;
-
+        this.lat = lat;
+        this.lng = lng;
     }
-
-
 }
